@@ -1,0 +1,26 @@
+---
+title: "shapiro_ps3"
+author: "Daniel Shapiro"
+date: "9/13/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+full_sample <- data.fram(vote = c(), county = c())
+counties <- c('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J')
+
+for(i in 1:10){
+  prop_liberal <- (40 + (i - 1)*2/100)
+  
+  voters <- sample(0:1, 1000, replace = TRUE, prob = c(prop_liberal, 1-prop_liberal))
+  
+  sample_new <- data.fram(vote = voters, county = counties[i])
+  
+  full_sample <- rbind(full_sample, sample_new)
+}
+```
+
