@@ -1,0 +1,23 @@
+---
+title: "Problem Set 3"
+author: "Daniel Shapiro"
+date: "9/13/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+set.seed(6800)
+library(tidyverse)
+```
+
+### Question 1 Background:
+
+*Suppose that $X$ and $Y$ are identical and independently distributed (i.i.d.) random variables distributed $\mathcal{N}(\mu_X, \sigma_X^2)$ and $\mathcal{N}(\mu_Y, \sigma_Y^2)$, respectively. Note that $\sigma_X$ represents the standard deviation of $X$, and $\sigma_X^2$ the variance. Find the following, expressed in terms of $\mu$ and $\sigma$:*
+
+### 1a) $E(7X - 6Y + 12)$
+
+### 1b) Var$(X + 5Y)$
+
+We know that $Var(aX + bY + c) = a^2Var(X) + b^2Var(Y) + 2abCov(X,Y)$. Inserting a 1 and 5 as a and b, we get $\sigma_X^2 + 25\sigma_Y^2 + 10Cov(X,Y)$. $Cov(X,Y) = E[XY] - E[X]E[Y] = E[(X-\mu_X)(Y-\mu_Y)]$. So our final equation is:
+$Var(X + 5Y) = \sigma_X^2 + 25\sigma_Y^2 + 10E[(X-\mu_X)(Y-\mu_Y)]$.
