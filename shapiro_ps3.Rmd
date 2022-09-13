@@ -51,3 +51,10 @@ Y & 1 & 2 & 3 & 4 \\
 \end{tabular}
 
 ### 2a) What is the expected value of $X$ and the expected value of $Y$?
+
+To find the expected value of X, we can run the formula: $E[X] = \Sigma(x)P(x)$. So we multiply the value x by each corresponding probability and add them up. So $E[X] = ((1*.12) + (1 * .08) + ... + (4*.10))$. The final answer is **2.57**.
+
+To find the expected value of Y, we can run the same formula, but for Y instead of X. So we multiply the value y by each corresponding probability and add them up. So $E[Y] = ((1*.12) + (1*.05) + ... + (4*.10))$. The final answer is **2.48**.
+
+### 2b) What are the variances of $X$ and of $Y$?
+
