@@ -168,8 +168,6 @@ $Var(Y|X = 4) = E[Y^2|X = 4] - E[Y|X = 4]^2$
 
 **So, this can be expressed as:** 
 
-= 
-
 \begin{equation*}
 Var(Y|X)=\begin{cases}
 0.854166 & \text{w/prob of .24}\\
@@ -178,3 +176,15 @@ Var(Y|X)=\begin{cases}
 0.78 & \text{w/prob of .18}
 \end{cases}
 \end{equation*}
+
+### 2g) Show that $E[Y]=E[E[Y|X]]$.
+
+We already know that E[Y] = 2.48. Now, to get E[E[Y|X]], we multiply each value of of E[Y|X] (which we called Z) by its corresponding probability and add them together. We thus end up with: 
+
+$1.75*.24 + 2*.25 + 2.91*.33 + 3.33*.18$. 
+
+Added together, these equal 2.4797. While 2.4797 is *technically* .0003 off from 2.48, this is almost certainly due to my rounding throughout the previous few problems. Thus, we can say that 2.4797 is essentially the same as 2.48 here, and thereby confidently say: $2.48 = 2.48; thus, E[Y] = E[E[Y|X]]$.
+
+### 2h) Find $Var(Y)$ using the law of total variance. Explain in words what the law of total variance does.
+
+The law of total variance can be expressed as: $V[Y] = E[V[Y|X]] + V[E[Y|X]]$.
