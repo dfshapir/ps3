@@ -127,3 +127,54 @@ p(z)=\begin{cases}
 \end{equation*}
 
 ### 2f) Find $Var(Y|X)$.
+
+We know:
+
+\begin{equation*}
+Var(Y|X)=\begin{cases}
+Var(Y|X = 1) & \text{if X = 1}\\
+Var(Y|X = 2) & \text{if X = 2}\\
+Var(Y|X = 3) & \text{if X = 3}\\
+Var(Y|X = 4) & \text{if X = 4}
+\end{cases}
+\end{equation*}
+
+= 
+
+\begin{equation*}
+Var(Y|X)=\begin{cases}
+Var(Y|X = 1) & \text{w/prob of .24}\\
+Var(Y|X = 2) & \text{w/prob of .25}\\
+Var(Y|X = 3) & \text{w/prob of .33}\\
+Var(Y|X = 4) & \text{w/prob of .18}
+\end{cases}
+\end{equation*}
+
+$Var(Y|X = 1) = E[Y^2|X = 1] - E[Y|X = 1]^2$
+
+= $((1^2*\frac{.12}{.24}) + (2^2*\frac{.08}{.24}) + (3^2*\frac{.02}{.24}) + (4^2*\frac{.02}{.24})) - 1.75^2 = \frac{47}{12} -3.0625 = 0.854166$.
+
+$Var(Y|X = 2) = E[Y^2|X = 2] - E[Y|X = 2]^2$
+
+= $((1^2*\frac{.05}{.25}) + (2^2*\frac{.17}{.25}) + (3^2*\frac{.01}{.25}) + (4^2*\frac{.02}{.25})) - 2^2 = \frac{114}{25} -4 = 0.56$.
+
+$Var(Y|X = 3) = E[Y^2|X = 3] - E[Y|X = 3]^2$
+
+= $((1^2*\frac{.01}{.33}) + (2^2*\frac{.05}{.33}) + (3^2*\frac{.23}{.33}) + (4^2*\frac{.04}{.33})) - 2.91^2 = \frac{292}{33} -8.4628 = 0.3857$.
+
+$Var(Y|X = 4) = E[Y^2|X = 4] - E[Y|X = 4]^2$
+
+= $((1^2*\frac{.01}{.18}) + (2^2*\frac{.02}{.18}) + (3^2*\frac{.05}{.18}) + (4^2*\frac{.10}{.18})) - 3.33^2 = \frac{214}{18} - 11.1 = 0.78$.
+
+**So, this can be expressed as:** 
+
+= 
+
+\begin{equation*}
+Var(Y|X)=\begin{cases}
+0.854166 & \text{w/prob of .24}\\
+0.56 & \text{w/prob of .25}\\
+0.3857 & \text{w/prob of .33}\\
+0.78 & \text{w/prob of .18}
+\end{cases}
+\end{equation*}
