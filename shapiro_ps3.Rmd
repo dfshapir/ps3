@@ -96,7 +96,34 @@ Luckily, we know all of these values already. Plugging in our numbers, we get:
 
 $Cor[X,Y] = \frac{0.624}{\sqrt{1.0875*0.9896}}$ = **0.6015**.
 
-### 2e) Find $E(Y|X=x)$ for $x = 1,2,3,4$.  Find the probability mass function of the random variable $E(Y|X)$.
+### 2e) Find $E[Y|X=x]$ for $x = 1,2,3,4$.  Find the probability mass function of the random variable $E[Y|X]$.
 
+For purposes of this question, we will set E[X|Y] = Z. So for this question, we need to take each value of X=x and multiply it by the given probability value divided by the marginal probability of Y=y. 
+For $E[Y|X=1]$, we thus get the following:
 
+$((1*\frac{.12}{.24}) + (2*\frac{.08}{.24}) + (3*\frac{.02}{.24}) + (4*\frac{.02}{.24})) = 1.75$
 
+For $E[Y|X=2]$, we get:
+
+$((1*\frac{.05}{.25}) + (2*\frac{.17}{.25}) + (3*\frac{.01}{.25}) + (4*\frac{.02}{.25})) = 2$
+
+For $E[Y|X=3]$, we get:
+
+$((1*\frac{.01}{.33}) + (2*\frac{.05}{.33}) + (3*\frac{.23}{.33}) + (4*\frac{.04}{.33})) = 2.91$
+
+For $E[Y|X=4]$, we get:
+
+$((1*\frac{.01}{.18}) + (2*\frac{.02}{.18}) + (3*\frac{.05}{.18}) + (4*\frac{.10}{.18})) = 3.33$
+
+Writing out the probability mass function is relatively easy if we've already figured out Z at x = 1,2,3,4. Below:
+
+\begin{equation*}
+p(z)=\begin{cases}
+.24 & \text{if Z = 1.75}\\
+.25 & \text{if Z = 2}\\
+.33 & \text{if Z = 2.91}\\
+.18 & \text{if Z = 3.33}
+\end{cases}
+\end{equation*}
+
+### 2f) Find $Var(Y|X)$.
