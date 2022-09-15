@@ -52,9 +52,51 @@ Y & 1 & 2 & 3 & 4 \\
 
 ### 2a) What is the expected value of $X$ and the expected value of $Y$?
 
-To find the expected value of X, we can run the formula: $E[X] = \Sigma(x)P(x)$. So we multiply the value x by each corresponding probability and add them up. So $E[X] = ((1*.12) + (1 * .08) + ... + (4*.10))$. The final answer is **2.57**.
+To find the expected value of X, we can run the formula: $E[X] = \Sigma(x)P(x)$. So we multiply the value x by each corresponding probability and add them up. So $E[X] = ((1*.12) + (1 * .08) + ... + (4*.10))$. The final answer is **2.45**.
 
 To find the expected value of Y, we can run the same formula, but for Y instead of X. So we multiply the value y by each corresponding probability and add them up. So $E[Y] = ((1*.12) + (1*.05) + ... + (4*.10))$. The final answer is **2.48**.
 
 ### 2b) What are the variances of $X$ and of $Y$?
+
+The variance of $X$ or $(Var(X))$ can be defined as $\Sigma(x-\mu_x)^2p(x)$. The variance of $Y$ or $(Var(Y))$ can be defined as $\Sigma(y-\mu_y)^2p(y)$. So we already know that $\mu_x = 2.45$ and $\mu_y = 2.48$; now, we need to find the probability of X at each point and the probability of Y at each point. To do this, we can just add up the proper rows and columns. 
+
+For X, we get: (.24 (when x = 1), .25 (when x = 2), .33 (when x = 3), and .18 (when x = 4)). 
+
+For Y, we get: (.19 (when y = 1), .32 (when y = 2), .31 (when y = 3), and .18 (when y = 4)).
+
+Now, equation time:
+
+$Var(X)=(1-2.45)^2*.24 + (2-2.245)^2*.25 + (3-2.45)^2*.33 + (4-2.45^2*.18)$. This ends up equaling **1.0875**.
+
+$Var(Y)=(1-2.48)^2*.19 + (2-2.248)^2*.32 + (3-2.48)^2*.31 + (4-2.48^2*.18)$. This ends up equaling **0.9896**.
+
+### 2c) What is the covariance of $X$ and $Y$?
+
+We know that the covariance of $X$ and $Y$ can be defined by the function: 
+
+$Cov(X,Y) = E[XY] - E[X]E[Y]$
+
+First, we know $E[X]E[Y]$ -- it's 2.48*2.45. This is 6.076. 
+
+To find E[XY], we need to multiply each value of Y and X by their probability, and then add everything together. Like so: 
+
+$((1*1*.12) + (1*2*.08) + (1*3*.03) + ... + (4*4*.10))$. 
+
+After a somewhat time-consuming process, we end up with 6.70.
+
+Then, we subtract: 6.70-6.076 = **0.624**.
+
+### 2d) What is the correlation between $X$ and $Y$?
+
+The function for correlation is:
+
+$Cor[X,Y] = \frac{Cov[X,Y]}{\sqrt{V[X]V[Y]}}$. 
+
+Luckily, we know all of these values already. Plugging in our numbers, we get:
+
+$Cor[X,Y] = \frac{0.624}{\sqrt{1.0875*0.9896}}$ = **0.6015**.
+
+### 2e) Find $E(Y|X=x)$ for $x = 1,2,3,4$.  Find the probability mass function of the random variable $E(Y|X)$.
+
+
 
