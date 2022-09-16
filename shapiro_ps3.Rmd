@@ -188,3 +188,18 @@ Added together, these equal 2.4797. While 2.4797 is *technically* .0003 off from
 ### 2h) Find $Var(Y)$ using the law of total variance. Explain in words what the law of total variance does.
 
 The law of total variance can be expressed as: $V[Y] = E[V[Y|X]] + V[E[Y|X]]$.
+
+We already have V[Y|X], so here we can find E[V[Y|X]] by multiplying each value of V[Y|X] by its corresponding probability and adding them all together. So we get 
+
+$.854166*.24 + .56*.25 + .3857*.33 + .78*.18$. This equals about .613.
+
+Next, we need to find the variance of E[Y|X], or as we define it, Z. $V[Z] = E[Z^2] - E[Z]^2$. $E[Z] = 2.48$, so $E[Z]^2 = 6.1504$. For $E[Z^2]$, we just have to do something similar as in 2g, but we square each value z in each part of the expression. So:
+
+$1.75^2*.24 + 2^2 * .25 + 2.91^2 * .33 + 3.33^2 * .18 = 6.529473$. 
+
+So $V[Z] = 6.529473-6.1504$ = about $0.379$. .379 + .613 = **about .99.** This makes sense, because I got .9896 for V[Y] in 2b. 
+
+The law of total variance essentially combines "within variance" and "between variance" to give us the complete picture. In this instance, it shows us average variance in associative mating patterns within the two gender groups and between the two gender groups. 
+
+### 2i) Explain, in words, what your findings mean for the relationship between the ideology of husbands and wives.
+
