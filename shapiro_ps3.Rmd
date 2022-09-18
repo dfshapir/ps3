@@ -30,11 +30,11 @@ Because we know that the two variables are so-called "i.i.d." variables, we know
 
 First, we can split these up according to properties shown in 1a. So we get $5E[X^2]-12E[XY]+16E[Y^2]$. 
 
-Now, we can already deal with the first and last bits of this expression. We know that $\sigma_X^2 = E[X^2] - \mu_X^2$ and $\sigma_Y^2 = E[Y^2] - \mu_Y^2$. Thus, $E[X^2] = \sigma_X^2 + \mu_X^2$ and $E[Y^2] = \sigma_Y^2 + \mu_Y^2$. So we can set this as $5\sigma_X^2 + 5\mu_X^2 + 12E[XY] + 16\sigma_Y^2 + 16\mu_Y^2$.
+Now, we can already deal with the first and last bits of this expression. We know that $\sigma_X^2 = E[X^2] - \mu_X^2$ and $\sigma_Y^2 = E[Y^2] - \mu_Y^2$. Thus, $E[X^2] = \sigma_X^2 + \mu_X^2$ and $E[Y^2] = \sigma_Y^2 + \mu_Y^2$. So we can set this as $5\sigma_X^2 + 5\mu_X^2 - 12E[XY] + 16\sigma_Y^2 + 16\mu_Y^2$.
 
 Finally, the question tells us that X and Y are independent random variables. So we know therefore that $E[XY] = E[X]E[Y]$. We can write this as $\mu_X\mu_Y$.
-
-Our final expression: $5\sigma_X^2 + 5\mu_X^2 + 12\mu_X\mu_Y + 16\sigma_Y^2 + 16\mu_Y^2$.
+bbbbbbbbbbb b 
+Our final expression: $5\sigma_X^2 + 5\mu_X^2 - 12\mu_X\mu_Y + 16\sigma_Y^2 + 16\mu_Y^2$.
 
 ### Question 2 Background:
 
@@ -203,3 +203,107 @@ The law of total variance essentially combines "within variance" and "between va
 
 ### 2i) Explain, in words, what your findings mean for the relationship between the ideology of husbands and wives.
 
+Well, for the most part, we see that the idea of "associative mating" holds true, although it's definitely not 100% black and white. There are certainly very few couples whose ideologies consist of one who is very liberal and one who is very conservative. And it's not like the data was taken from a biased sample (i.e. the participants were overwhelmingly liberal or overwhelmingly conservative); the expected values of both men and women were very close to the center, which would be defined as 2.50. For the most part, "birds of a feather flock together." 
+
+It's definitely not 100% the case, though. Our correlation value was around .6, which definitely shows a correlation between the two variables, but it does not show a directly linear relationship. There is certainly room for variation in couples, and many couples do have differences in ideology. Obviously, a correlation value of "1" is unrealistic, but still, it certainly could have been higher.
+
+One block of responses that I found interesting was the center bit in the table -- the center 4 ((2, 3), (3, 2), (2, 2), (3, 3). It really surprised me how moderate liberals and moderate conservatives definitely tended to stay very much more with their own ((2, 2), (3, 3)) than with moderates on the other side. The percentages for (3, 2) and (2, 3) were way smaller than I would have expected. So I would be curious to see more research regarding this phenomenon.
+
+In general, however, we can say that at least in this sample, "associative mating" definitely does have a degree of legitimacy as a concept. It's not a perfect fit, but in general, people seem to tend to group together with similarly-minded people.
+
+### Question 3 Background:
+
+*Now let's explore assortative mating in R! First, based on the probabilities in Problem 2, create a dataset of 1,000 married couples' ideologies using sample().*
+
+```{r 3setup, warning = FALSE}
+# First, I create the "women" dataset. Most of what we looked at in question 2 
+# was Y|X, or men|women. So it's easier to create "women" first and then base the men off
+# of that because the calculations are already done.
+
+women <- sample(1:4, size = 1000, replace = TRUE, prob = c(.24, .25, .33, .18))
+
+# Create an empty vector for men that I can modify with a for loop.
+
+men <- c(rep(1, 1000))
+
+couples <- data.frame(women, men)
+
+# For loop time. For the probabilities, I used the probability at each value (X, Y)
+# and divided it by the marginal probability for (X = x) for each value.
+
+for(i in 1:1000){
+  if(couples$women[i] == 1){
+    couples$men[i] <- sample(1:4, replace = TRUE, prob = c((.12/.24), (.08/.24), 
+                                                           (.02/.24), (.02/.24)))
+  }
+  else if(couples$women[i] == 2){
+    couples$men[i] <- sample(1:4, replace = TRUE, prob = c((.05/.25), (.17/.25), 
+                                                           (.01/.25), (.02/.25)))
+  }
+    else if(couples$women[i] == 3){
+      couples$men[i] <- sample(1:4, replace = TRUE, prob = c((.01/.33), (.05/.33), 
+                                                             (.23/.33), (.04/.33)))
+    }
+    else(couples$men[i] <- sample(1:4, replace = TRUE, prob = c((.01/.18), (.02/.18), 
+                                                                (.05/.18), (.10/.18))))
+}
+```
+
+### 3a) Using the data you created, define a function that takes a value of $X$ and $Y$ and returns the probability that two individuals with their ideologies are married. Show the results for $\{X=1, Y=4\}$, $\{X=2$, $Y=2\}$, $\{X=4, Y=3\}$.
+
+First, I create the function (below) then run it for the coordinates indicated. The results are show below.
+
+```{r 3a}
+
+ideology_prob <- function(x, y){
+ newmen <- couples %>% 
+   filter(women == x) %>%
+   filter(men == y)
+ return <- nrow(newmen)/nrow(couples)
+ return
+}
+
+ideology_prob(1, 4)
+ideology_prob(2, 2)
+ideology_prob(4, 3)
+```
+
+### 3b) Now define a function that takes as an input a value of *either* $X$ or $Y$ and returns the conditional probability distribution of the other variable (e.g., you input a value of $X$ and get the conditional probability distribution of $Y$ at that value of $X$). Use it to find the conditional probability of $Y$ at $X=1$ and the conditional probability of $X$ at $Y=4$.
+
+To be finished.
+
+### 3c) Use ggplot to create a bar chart that visualizes the relationship between $X$ and $Y$ (hint: the bar chart set-up in ggplot is a bit different than geom_line(). 
+
+Obviously, there are a ton of different ways to "visualize the relationship" between $X$ and $Y$. I think an interesting way to show it would be to show X on the X axis (1, 2, 3, 4) and then the expected value of Y|X, as we found in Question 2e. Below, I visualize this relationship. 
+
+```{r 3c}
+# First, I have to set up a dataset.
+
+plotx <- c(1, 2, 3, 4)
+ploty <- c(1.75, 2, 2.91, 3.33)
+
+plot <- data.frame(plotx, ploty)
+
+
+plot1 <- ggplot(plot, aes(x = plotx, y = ploty)) +
+  geom_col() +
+  labs(title = "Expected Husband Ideology (E[Y|X]) Given Wife Ideology (X)",
+       subtitle = "Data from Question 2e",
+       y = "E[Husband Ideology|Wife Ideology]",
+       x = "Wife Ideology")
+
+plot1
+```
+
+### 3d) Use your data and the functions \texttt{mean()} and \texttt{var()} to find $E(X), E(Y), Var(X),$ and $Var(Y)$. How does this compare to the findings you calculated by hand?
+
+```{r 3d}
+mean(couples$women)
+mean(couples$men)
+var(couples$women)
+var(couples$men)
+```
+
+From the results we get here, we see that the mean values for men and women are slightly lower than what we calculated by hand in our initial table. But they're quite similar; just a bit lower.
+
+On the variance side, the variance is a bit higher than in the original table that we calculated by hand. Again, though, they're quite similar to the initial table data. 
