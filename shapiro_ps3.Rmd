@@ -270,6 +270,8 @@ ideology_prob(4, 3)
 
 ### 3b) Now define a function that takes as an input a value of *either* $X$ or $Y$ and returns the conditional probability distribution of the other variable (e.g., you input a value of $X$ and get the conditional probability distribution of $Y$ at that value of $X$). Use it to find the conditional probability of $Y$ at $X=1$ and the conditional probability of $X$ at $Y=4$.
 
+This problem presented me with some difficulties. At first, I tried to define the function as a function of x and y. However, that approach required me to input *both* variables, which defeats the purpose of the problem and makes the function un-runnable for the purposes of this question. So instead, I have the user define the input variable first ("x" or "y") and then input the value (1, 2, 3, or 4). The return will be the conditional probability distribution of the other variable given the value of the input variable, expressed as a series of four numbers. I took all probability figures from the table that we were given before Problem 2. Incidentally, note the fun message that I have R display if the user of the function defines the arguments as anything other than those values specified in the function.
+
 ```{r 3b}
 conditional_prob <- function(input_variable, value){
   if(input_variable == "x" & value == 1){return <- c((.12/.24), (.08/.24), (.02/.24), (.02/.24))}
@@ -279,7 +281,8 @@ conditional_prob <- function(input_variable, value){
   else if(input_variable == "y" & value == 1){return <- c((.12/.19), (.05/.19), (.01/.19), (.01/.19))}
   else if(input_variable == "y" & value == 2){return <- c((.08/.32), (.17/.32), (.05/.32), (.02/.32))}
   else if(input_variable == "y" & value == 3){return <- c((.02/.31), (.01/.31), (.23/.31), (.05/.31))}
-  else(return <- c((.02/.18), (.02/.18), (.04/.18), (.10/.18)))
+  else if(input_variable == "y" & value == 4){return <- c((.02/.18), (.02/.18), (.04/.18), (.10/.18))}
+  else(return <- "Sadly, some relationships are not meant to be.")
 
 return
 }
