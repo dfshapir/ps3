@@ -270,7 +270,23 @@ ideology_prob(4, 3)
 
 ### 3b) Now define a function that takes as an input a value of *either* $X$ or $Y$ and returns the conditional probability distribution of the other variable (e.g., you input a value of $X$ and get the conditional probability distribution of $Y$ at that value of $X$). Use it to find the conditional probability of $Y$ at $X=1$ and the conditional probability of $X$ at $Y=4$.
 
-To be finished.
+```{r 3b}
+conditional_prob <- function(input_variable, value){
+  if(input_variable == "x" & value == 1){return <- c((.12/.24), (.08/.24), (.02/.24), (.02/.24))}
+  else if(input_variable == "x" & value == 2){return <- c((.05/.25), (.17/.25), (.01/.25), (.02/.25))}
+  else if(input_variable == "x" & value == 3){return <- c((.01/.33), (.05/.33), (.23/.33), (.04/.33))}
+  else if(input_variable == "x" & value == 4){return <- c((.01/.18), (.02/.18), (.05/.18), (.1/.18))}
+  else if(input_variable == "y" & value == 1){return <- c((.12/.19), (.05/.19), (.01/.19), (.01/.19))}
+  else if(input_variable == "y" & value == 2){return <- c((.08/.32), (.17/.32), (.05/.32), (.02/.32))}
+  else if(input_variable == "y" & value == 3){return <- c((.02/.31), (.01/.31), (.23/.31), (.05/.31))}
+  else(return <- c((.02/.18), (.02/.18), (.04/.18), (.10/.18)))
+
+return
+}
+
+conditional_prob(input_variable = "x", value = 1)
+conditional_prob(input_variable = "y", value = 4)
+```
 
 ### 3c) Use ggplot to create a bar chart that visualizes the relationship between $X$ and $Y$ (hint: the bar chart set-up in ggplot is a bit different than geom_line(). 
 
